@@ -1,17 +1,17 @@
 @if(session('success'))
     <div class="alert alert-success mx-3">
-        Operation Successfully Done
+        {{ session('success') }}
     </div>
 @endif
 
-@if(session('failed'))
+@if(session('error'))
     <div class="alert alert-danger mx-3">
-        Operation Failed!
+        {{ session('error') }}
     </div>
 @endif
 
 @if(session('successOrder'))
     <div class="alert alert-success mx-3">
-       {{ session('successOrder') }}
+        {{ session('successOrder') }}
     </div>
 @endif
