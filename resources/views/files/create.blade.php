@@ -17,8 +17,8 @@
                         </div>
                     </div>
                     <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" name="private" id="private">
-                        <label class="custom-control-label" for="private">Will Upload Private</label>
+                        <input type="checkbox" class="custom-control-input" name="is_private" id="is_private">
+                        <label class="custom-control-label" for="is_private">Will Upload Private</label>
                     </div>
                     <button class="btn btn-primary" type="submit">Upload File</button>
                 </form>
