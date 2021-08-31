@@ -21,4 +21,14 @@ class File extends Model
     {
         return resolve(StorageManager::class)->getAbsolutePathOf($this->name, $this->type, $this->is_private);
     }
+
+    public function toMegabyteSize(): string
+    {
+        return number_format($this->size / (1024 * 1024), 2);
+    }
+
+    public function download()
+    {
+        return resolve(StorageManager::class)->getFile($this->name, $this->type, $this->is_private);
+    }
 }
