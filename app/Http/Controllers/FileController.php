@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\FileHasExistException;
 use App\Http\Requests\FileRequest;
+use App\Models\File;
 use App\Services\Uploader\StorageManager;
 use App\Services\Uploader\Uploader;
 use Exception;
@@ -22,6 +23,12 @@ class FileController extends Controller
         $this->uploader = $uploader;
     }
 
+    public function index()
+    {
+        $files = File::all();
+        return view('files.index', compact('files'));
+    }
+
     public function create()
     {
         return view('files.create');
@@ -37,5 +44,10 @@ class FileController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
+    }
+
+    public function show(File $file)
+    {
+        return $file->download();
     }
 }
