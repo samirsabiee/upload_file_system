@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/', 'welcome');
-Route::get('file/create',[FileController::class, 'create'])->name('file.create');
-Route::post('file',[FileController::class, 'new'])->name('file.new');
+Route::get('file/create', [FileController::class, 'create'])->name('file.create');
+Route::post('file', [FileController::class, 'new'])->name('file.new');
+Route::get('files', [FileController::class, 'index'])->name('files');
+Route::get('file/{file}', [FileController::class, 'show'])->name('file.show');
 
 
