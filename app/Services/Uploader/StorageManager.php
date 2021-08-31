@@ -7,6 +7,7 @@ namespace App\Services\Uploader;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\UploadedFile;
 use Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class StorageManager
 {
@@ -38,5 +39,10 @@ class StorageManager
     private function disk(bool $private): Filesystem
     {
         return $private ? Storage::disk('private') : Storage::disk('public');
+    }
+
+    public function getFile(string $name, string $type, bool $isPrivate): StreamedResponse
+    {
+        return $this->disk($isPrivate)->download($this->directoryPrefix($name, $type));
     }
 }
