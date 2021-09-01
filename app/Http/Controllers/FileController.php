@@ -20,6 +20,7 @@ class FileController extends Controller
      */
     public function __construct(Uploader $uploader)
     {
+        $this->middleware('auth');
         $this->uploader = $uploader;
     }
 
@@ -49,5 +50,12 @@ class FileController extends Controller
     public function show(File $file)
     {
         return $file->download();
+    }
+
+    public function removeFile(File $file): RedirectResponse
+    {
+        return $file->removeFile()
+            ? redirect()->back()->with('success', 'File deleted successfully')
+            : redirect()->back()->with('error', 'Failed to delete!');
     }
 }
