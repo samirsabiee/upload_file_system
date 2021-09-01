@@ -31,4 +31,14 @@ class File extends Model
     {
         return resolve(StorageManager::class)->getFile($this->name, $this->type, $this->is_private);
     }
+
+    public function removeFile(): ?bool
+    {
+        return $this->removeFromStorage() ? $this->delete() : false;
+    }
+
+    private function removeFromStorage()
+    {
+        return resolve(StorageManager::class)->deleteFile($this->name, $this->type, $this->is_private);
+    }
 }
