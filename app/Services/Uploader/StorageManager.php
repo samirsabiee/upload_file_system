@@ -45,4 +45,9 @@ class StorageManager
     {
         return $this->disk($isPrivate)->download($this->directoryPrefix($name, $type));
     }
+
+    public function deleteFile(string $name, string $type, bool $isPrivate): bool
+    {
+        return $this->disk($isPrivate)->delete($this->directoryPrefix($name, $type));
+    }
 }
